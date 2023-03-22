@@ -1,0 +1,50 @@
+package Recursion;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class IndicesOfX {
+
+    public static int[] allIndices(int input[], int x){
+        return allIndices(input,x,0);
+    }
+
+//    public static int[] allIndices(int input[], int x, int startIndex){
+//        List<Integer> list = new ArrayList<>();
+//
+//        for (int i=0;i<input.length;i++){
+//            if (input[i]==x){
+//                list.add(i);
+//            }
+//        }
+//
+//        int newArr[] = new int[list.size()];
+//        for (int i=0;i<newArr.length;i++){
+//            newArr[i]=list.get(i);
+//        }
+//
+//        return newArr;
+//    }
+
+    public static int[] allIndices(int input[], int x, int startIndex){
+        
+        if (startIndex>=input.length){
+            return new int[0];
+        }
+        
+        int smallAns[] = allIndices(input, x, startIndex + 1);
+        
+        if (input[startIndex]==x){
+            int newA[] = new int[smallAns.length+1];
+            newA[0]=input[startIndex];
+            for (int i=0;i<smallAns.length;i++){
+                newA[i+1] = smallAns[i];
+            }
+            return newA;
+        }
+        else {
+            return smallAns;
+        }
+    }
+    
+}
