@@ -1,0 +1,32 @@
+package Recursion;
+
+public class CountZeroes {
+
+    public static int countZeroesRec(int input){
+
+        if (input<10){
+            return 0;
+        }
+
+        int x = input%10;
+
+        if (x!=0){
+            return countZeroesRec(input/10);
+        }
+        else {
+            return 1 + countZeroesRec(input/10);
+        }
+
+//        if (input%10 ==0){
+//            return 1+countZeroesRec(input/10);
+//        }
+//        else if(input/10==0){
+//            return 0;
+//        }
+//        else {
+//            return countZeroesRec(input/10);
+//        }
+
+    }
+
+}
