@@ -1,0 +1,26 @@
+package Recursion;
+
+public class CheckPalindrome {
+    
+    public static boolean isPalindrome(String input) {
+        return isPalindrome(input,0,input.length()-1);
+    }
+
+    public static boolean isPalindrome(String input, int startIndex, int endIndex) {
+        
+        if (startIndex==endIndex){
+            return true;
+        }
+        
+        if (input.charAt(startIndex)!=input.charAt(endIndex)){
+            return false;
+        }
+        
+        if (startIndex < endIndex){
+            return isPalindrome(input,startIndex+1,endIndex-1);
+        }
+        return true;
+        
+    }
+    
+}
