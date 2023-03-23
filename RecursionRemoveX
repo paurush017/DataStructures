@@ -1,0 +1,28 @@
+package Recursion;
+
+public class RemoveX {
+    
+    public static String removeX(String input){
+        return removeX(input, 0); 
+    } 
+    
+    public static String removeX(String input, int startIndex){
+        if (input.length()==0){
+            return input;
+        }
+
+//        if (input.charAt(0)=='x'){
+//            return removeX(input.substring(1,input.length()));
+//        }
+        
+        if (input.charAt(startIndex)=='x'){
+            return removeX(input,startIndex+1);
+        }
+        
+        else {
+            String ans = Character.toString(input.charAt(startIndex));
+            return ans + removeX(input,startIndex+1);
+        }
+    }
+    
+}
