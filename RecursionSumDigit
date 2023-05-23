@@ -10,4 +10,6 @@ public class RecursionSumDigit {
         return input%10 + sumOfDigits(input/10);
     }
     
+    // Ans of 27(Decimal) & 027(Octal)[ 0*8^2 + 2*8^1 + 7*8^0] will be different
+    
 }
