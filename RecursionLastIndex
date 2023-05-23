@@ -73,6 +73,26 @@ public class RecursionLastIndex {
 //        }
 //        else
 //            return smallAns;
+
+        //     ------------ 5th Way ----------------
+
+//		if(startIndex>=input.length) {
+//			return -1;
+//		}
+//		
+//		int smallAns = lastIndex( input, startIndex+1, x);
+//		
+//		if(smallAns!=-1) {
+//			return smallAns;
+//		}
+//		
+//		if(input[startIndex]==x) {
+//			return startIndex;
+//		}
+//		
+//		else {
+//			return -1;
+//		}
     }
 
 }
