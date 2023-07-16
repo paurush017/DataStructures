@@ -1,28 +1,48 @@
-package Recursion;
+import java.util.Scanner;
 
-public class RemoveX {
-    
-    public static String removeX(String input){
-        return removeX(input, 0); 
-    } 
-    
-    public static String removeX(String input, int startIndex){
-        if (input.length()==0){
-            return input;
-        }
+public class XvowelReplacement {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a line: ");
+        String input = scanner.nextLine();
+        scanner.close();
 
-//        if (input.charAt(0)=='x'){
-//            return removeX(input.substring(1,input.length()));
-//        }
-        
-        if (input.charAt(startIndex)=='x'){
-            return removeX(input,startIndex+1);
-        }
-        
-        else {
-            String ans = Character.toString(input.charAt(startIndex));
-            return ans + removeX(input,startIndex+1);
-        }
+        String result = replaceXvowels(input);
+        System.out.println(result);
     }
-    
+
+    public static String replaceXvowels(String input) {
+        String vowels = "aeimoxy";
+        StringBuilder sb = new StringBuilder();
+
+        int count = 0;
+
+        for (int i = 0; i < input.length(); i++) {
+            char currentChar = input.charAt(i);
+            char lowerCaseChar = Character.toLowerCase(currentChar);
+
+            boolean isVowel = vowels.indexOf(lowerCaseChar) != -1;
+
+            if (isVowel) {
+                // Find the end of consecutive xvowels
+                int endIndex = i + 1;
+                while (endIndex < input.length() && vowels.indexOf(Character.toLowerCase(input.charAt(endIndex))) != -1) {
+                    endIndex++;
+                }
+
+                // Replace consecutive xvowels with a single "X"
+                if (endIndex - i >= 2) {
+                    sb.append('X');
+                } else {
+                    sb.append(input.substring(i, endIndex));
+                }
+
+                i = endIndex - 1; // Move the index to the last vowel in the sequence
+            } else {
+                sb.append(currentChar);
+            }
+        }
+
+        return sb.toString();
+    }
 }
